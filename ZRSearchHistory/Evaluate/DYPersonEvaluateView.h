@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 @class DYEvaluateModel;
 @interface DYPersonEvaluateView : UIView
-@property (nonatomic, strong) NSArray<DYEvaluateModel *> *modelArr;
+@property(nonatomic, strong) NSArray<DYEvaluateModel *> *modelArr;
 @end

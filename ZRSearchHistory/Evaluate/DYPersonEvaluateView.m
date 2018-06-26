@@ -94,6 +94,8 @@ NSInteger const EvaluateColNum = 3;
 
     for (int i = 0; i < count; i++) {
         DYEvaluateModel *model = modelArr[i];
+        model.color = kRandomColor;
+        model.value = @"0";
         NSInteger row = i / EvaluateColNum;
         NSInteger col = i % EvaluateColNum;
         CGFloat btnX = 0;

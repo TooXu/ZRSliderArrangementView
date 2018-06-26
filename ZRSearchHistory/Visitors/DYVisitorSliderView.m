@@ -7,6 +7,7 @@
 //
 
 #import "DYVisitorSliderView.h"
+#import "DYVisitorModel.h"
 
 @interface DYVisitorAvatarView : UIView
 @property(nonatomic, strong) UIImageView *avatarImg;
@@ -56,7 +57,8 @@ CGFloat const avatarImgH = 54;
         DYVisitorAvatarView *avatarView =
             [[DYVisitorAvatarView alloc] initWithFrame:CGRectMake(0, 0, avatarImgH, avatarImgH)];
         UIImageView *lastImg = [self.avatarArr lastObject];
-        [avatarView.avatarImg setImage:[UIImage imageNamed:@"default_face"]];
+        [avatarView.avatarImg sd_setImageWithURL:[NSURL URLWithString:_visitorsArr[index].img]
+                                placeholderImage:[UIImage imageNamed:@"default_face"]];
         CGFloat imgX = avatarImgMargin + CGRectGetMaxX(lastImg.frame);
         if (index == 0) {
             imgX = avatarImgSpace + CGRectGetMaxX(lastImg.frame);
