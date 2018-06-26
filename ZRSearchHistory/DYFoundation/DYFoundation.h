@@ -11,4 +11,5 @@
 #import "UIImage+Utility.h"
 #import "DYThemeManager.h"
 #import "UIView+Frame.h"
+#import "UIView+Gesture.h"
 

@@ -9,6 +9,16 @@
 #import <UIKit/UIKit.h>
 @class DYVisitorModel;
 
+@protocol DYVisitorSliderViewDelegate<NSObject>
+@optional
+
+- (void)visitorSliderViewClickedAvatat:(DYVisitorModel *)visitorModel;
+
+@end
+
 @interface DYVisitorSliderView : UIScrollView
-@property (nonatomic, strong) NSArray<DYVisitorModel *> *visitorsArr;
+
+@property(nonatomic, weak) id<DYVisitorSliderViewDelegate> delegate;
+@property(nonatomic, strong) NSArray<DYVisitorModel *> *visitorsArr;
+
 @end

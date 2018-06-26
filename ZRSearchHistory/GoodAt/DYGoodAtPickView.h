@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @protocol DYGoodAtPickViewDelegate<NSObject>
+@optional
 
-- (void)historyWordHasBeenClicked:(NSString *)keyWord;
+- (void)goodAtPickViewDidEndSelected:(NSArray *)goodAtArr;
 
 @end
 

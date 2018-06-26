@@ -39,6 +39,9 @@
 		704B462C20E0F05300247DFE /* DYGoodAtPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B462B20E0F05300247DFE /* DYGoodAtPickView.m */; };
 		704B463420E0F14D00247DFE /* DYVisitorSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B463320E0F14D00247DFE /* DYVisitorSliderView.m */; };
 		704B463720E0FB4300247DFE /* DYVisitorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B463620E0FB4300247DFE /* DYVisitorModel.m */; };
+		704B463A20E1F2F000247DFE /* UIView+Gesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B463920E1F2F000247DFE /* UIView+Gesture.m */; };
+		704B464020E1FCCF00247DFE /* DYPersonEvaluateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 704B463F20E1FCCF00247DFE /* DYPersonEvaluateView.m */; };
+		7088781220E233840078D2A9 /* DYEvaluateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7088781120E233840078D2A9 /* DYEvaluateModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,12 @@
 		704B463320E0F14D00247DFE /* DYVisitorSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYVisitorSliderView.m; sourceTree = "<group>"; };
 		704B463520E0FB4300247DFE /* DYVisitorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYVisitorModel.h; sourceTree = "<group>"; };
 		704B463620E0FB4300247DFE /* DYVisitorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYVisitorModel.m; sourceTree = "<group>"; };
+		704B463820E1F2F000247DFE /* UIView+Gesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Gesture.h"; sourceTree = "<group>"; };
+		704B463920E1F2F000247DFE /* UIView+Gesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Gesture.m"; sourceTree = "<group>"; };
+		704B463E20E1FCCF00247DFE /* DYPersonEvaluateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYPersonEvaluateView.h; sourceTree = "<group>"; };
+		704B463F20E1FCCF00247DFE /* DYPersonEvaluateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYPersonEvaluateView.m; sourceTree = "<group>"; };
+		7088781020E233840078D2A9 /* DYEvaluateModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYEvaluateModel.h; sourceTree = "<group>"; };
+		7088781120E233840078D2A9 /* DYEvaluateModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYEvaluateModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +188,9 @@
 		70380E2C1EA8A1160066238E /* ZRSearchHistory */ = {
 			isa = PBXGroup;
 			children = (
+				704B463C20E1FC2200247DFE /* DYFoundation */,
 				704B463120E0F10B00247DFE /* Visitors */,
+				704B463D20E1FC7600247DFE /* Evaluate */,
 				704B462920E0EFFC00247DFE /* GoodAt */,
 				704B45EF20E0EF1700247DFE /* AFNetworking */,
 				70380E301EA8A1160066238E /* AppDelegate.h */,
@@ -190,15 +201,6 @@
 				70380E391EA8A1160066238E /* Assets.xcassets */,
 				70380E3B1EA8A1160066238E /* LaunchScreen.storyboard */,
 				70380E3E1EA8A1160066238E /* Info.plist */,
-				704B45EE20E0E3AA00247DFE /* DYFoundation.h */,
-				704B45E320E0BEC200247DFE /* Const.h */,
-				704B45DC20E0A1B300247DFE /* UIConst.h */,
-				704B45DD20E0A71C00247DFE /* UIImage+Utility.h */,
-				704B45DE20E0A71C00247DFE /* UIImage+Utility.m */,
-				704B45E020E0BE6200247DFE /* DYThemeManager.h */,
-				704B45E120E0BE6200247DFE /* DYThemeManager.m */,
-				704B45EB20E0D83900247DFE /* UIView+Frame.h */,
-				704B45EA20E0D83800247DFE /* UIView+Frame.m */,
 				70380E2D1EA8A1160066238E /* Supporting Files */,
 			);
 			path = ZRSearchHistory;
@@ -308,6 +310,35 @@
 				704B463620E0FB4300247DFE /* DYVisitorModel.m */,
 			);
 			path = Visitors;
+			sourceTree = "<group>";
+		};
+		704B463C20E1FC2200247DFE /* DYFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				704B45EE20E0E3AA00247DFE /* DYFoundation.h */,
+				704B45E320E0BEC200247DFE /* Const.h */,
+				704B45DC20E0A1B300247DFE /* UIConst.h */,
+				704B45DD20E0A71C00247DFE /* UIImage+Utility.h */,
+				704B45DE20E0A71C00247DFE /* UIImage+Utility.m */,
+				704B45E020E0BE6200247DFE /* DYThemeManager.h */,
+				704B45E120E0BE6200247DFE /* DYThemeManager.m */,
+				704B45EB20E0D83900247DFE /* UIView+Frame.h */,
+				704B45EA20E0D83800247DFE /* UIView+Frame.m */,
+				704B463820E1F2F000247DFE /* UIView+Gesture.h */,
+				704B463920E1F2F000247DFE /* UIView+Gesture.m */,
+			);
+			path = DYFoundation;
+			sourceTree = "<group>";
+		};
+		704B463D20E1FC7600247DFE /* Evaluate */ = {
+			isa = PBXGroup;
+			children = (
+				704B463E20E1FCCF00247DFE /* DYPersonEvaluateView.h */,
+				704B463F20E1FCCF00247DFE /* DYPersonEvaluateView.m */,
+				7088781020E233840078D2A9 /* DYEvaluateModel.h */,
+				7088781120E233840078D2A9 /* DYEvaluateModel.m */,
+			);
+			path = Evaluate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70380E351EA8A1160066238E /* ViewController.m in Sources */,
+				7088781220E233840078D2A9 /* DYEvaluateModel.m in Sources */,
 				704B462120E0EF1700247DFE /* AFHTTPSessionManager.m in Sources */,
 				704B462520E0EF1700247DFE /* AFSecurityPolicy.m in Sources */,
 				70380E321EA8A1160066238E /* AppDelegate.m in Sources */,
@@ -458,6 +490,7 @@
 				704B461820E0EF1700247DFE /* UIRefreshControl+AFNetworking.m in Sources */,
 				704B45E620E0CF3A00247DFE /* DYGoodAtSlideView.m in Sources */,
 				704B461920E0EF1700247DFE /* AFNetworkActivityIndicatorManager.m in Sources */,
+				704B463A20E1F2F000247DFE /* UIView+Gesture.m in Sources */,
 				704B462C20E0F05300247DFE /* DYGoodAtPickView.m in Sources */,
 				704B463420E0F14D00247DFE /* DYVisitorSliderView.m in Sources */,
 				704B45EC20E0D83900247DFE /* UIView+Frame.m in Sources */,
@@ -471,6 +504,7 @@
 				704B45DF20E0A71C00247DFE /* UIImage+Utility.m in Sources */,
 				704B461B20E0EF1700247DFE /* UIButton+AFNetworking.m in Sources */,
 				704B462420E0EF1700247DFE /* AFNetworkReachabilityManager.m in Sources */,
+				704B464020E1FCCF00247DFE /* DYPersonEvaluateView.m in Sources */,
 				704B463720E0FB4300247DFE /* DYVisitorModel.m in Sources */,
 				70380E2F1EA8A1160066238E /* main.m in Sources */,
 			);

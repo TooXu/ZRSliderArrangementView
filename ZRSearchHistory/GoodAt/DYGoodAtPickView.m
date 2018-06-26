@@ -40,51 +40,38 @@ static UIFont *selectedFont() { return [DYThemeManager getBoldFont:16]; }
 @property(nonatomic, assign) CGFloat selfHeight;
 @property(nonatomic, assign) CGRect selfFrame;
 /// 每次至多选择三个选项
-@property(nonatomic, strong) NSMutableArray<DYBoardButton *> *selectedButtonArr;
+@property(nonatomic, strong) NSMutableArray<NSString *> *selectedButtonArr;
 
 @end
 /// button 文字两边空隙
-CGFloat const btnEnhanceW = 24;
+CGFloat const pickBtnEnhanceW = 24;
 /// button 左右之间间距
-CGFloat const btnMargin = 10;
+CGFloat const pickBtnMargin = 10;
 /// button 与屏幕间距
-CGFloat const btnSpace = 16;
+CGFloat const pickBtnSpace = 16;
 /// button 上下间距
-CGFloat const btnMarginTB = 12;
+CGFloat const pickBtnMarginTB = 12;
 /// button 高度
-CGFloat const btnH = 40;
+CGFloat const pickBtnH = 40;
 
 ///列数
-NSInteger const colNum = 3;
+NSInteger const pickColNum = 3;
 
 @implementation DYGoodAtPickView
 #pragma mark - Setter
 
 - (void)setHistoryWordsArr:(NSArray<NSString *> *)historyWordsArr {
     _historyWordsArr = historyWordsArr;
-
-    [self.rowsContainer enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-      [obj enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        [obj removeFromSuperview];
-      }];
-    }];
-    [self.rowsContainer removeAllObjects];
-
     NSUInteger count = historyWordsArr.count;
-    CGFloat tempSum = 0;
-
-    NSMutableArray *btnsArr = [NSMutableArray array];
-    [self.rowsContainer addObject:btnsArr];
 
     for (int i = 0; i < count; i++) {
         NSString *hitoryWord = historyWordsArr[i];
 
-        NSInteger row = i / colNum;
-        NSInteger col = i % colNum;
+        NSInteger row = i / pickColNum;
+        NSInteger col = i % pickColNum;
 
-        //        CGFloat btnW = (kScreenWidth - btnMargin * 4) / 3;
-        CGFloat btnX = (btnW + btnMargin) * col;
-        CGFloat btnY = (btnH + btnMarginTB) * row;
+        CGFloat btnX = (btnW + pickBtnMargin) * col;
+        CGFloat btnY = (pickBtnH + pickBtnMarginTB) * row;
 
         DYBoardButton *button = [DYBoardButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:hitoryWord forState:UIControlStateNormal];
@@ -106,47 +93,13 @@ NSInteger const colNum = 3;
         [button.layer setBorderWidth:0.5];
         [button.layer setCornerRadius:3.0];
         [button.layer setBorderColor:kCOLORWithHex(0xDEDEDE).CGColor];
-        button.frame = CGRectMake(btnX, btnY, btnW, btnH);
+        button.frame = CGRectMake(btnX, btnY, btnW, pickBtnH);
         [self addSubview:button];
         if (i == count - 1) {
             _selfHeight = CGRectGetMaxY(button.frame);
             [self setNeedsLayout];
         }
-
-        //        tempSum += btnW;
-        //
-        //        if (tempSum < self.bounds.size.width + btnMargin) {
-        //            [btnsArr addObject:button];
-        //        } else {
-        //            tempSum = btnW;
-        //            btnsArr = [NSMutableArray array];
-        //            [btnsArr addObject:button];
-        //            [_rowsContainer addObject:btnsArr];
-        //        }
     }
-
-    //    CGFloat btnY = 0;
-    //    for (int index = 0; index < self.rowsContainer.count; index++) {
-    //        NSArray<DYBoardButton *> *btnsArr = self.rowsContainer[index];
-    //        if (index == 0) {
-    //            btnY = 15;
-    //        } else {
-    //            btnY = 15 + (btnH + btnMarginTB) * index;
-    //        }
-    //        for (int i = 0; i < btnsArr.count; i++) {
-    //            DYBoardButton *button = (DYBoardButton *)[btnsArr objectAtIndex:i];
-    //            [button sizeToFit];
-    //            if (i == 0) {
-    //                button.frame = CGRectMake(0, btnY, btnw, btnH);
-    //            } else {
-    //                button.frame = CGRectMake(CGRectGetMaxX(btnsArr[i - 1].frame) + btnMargin, btnY, btnw, btnH);
-    //            }
-    //            if (index == self.rowsContainer.count - 1 && i == btnsArr.count - 1) {
-    //                _selfHeight = CGRectGetMaxY(button.frame);
-    //                [self setNeedsLayout];
-    //            }
-    //        }
-    //    }
 }
 
 #pragma mark - setter
@@ -164,7 +117,7 @@ NSInteger const colNum = 3;
     return _rowsContainer;
 }
 
-- (NSMutableArray<DYBoardButton *> *)selectedButtonArr {
+- (NSMutableArray<NSString *> *)selectedButtonArr {
     if (!_selectedButtonArr) {
         _selectedButtonArr = [[NSMutableArray alloc] init];
     }
@@ -173,20 +126,19 @@ NSInteger const colNum = 3;
 
 #pragma mark - private method
 - (void)keyButtonAction:(DYBoardButton *)button {
-    NSString *title = button.titleLabel.text;
     button.selected = !button.selected;
     if (button.selected) {
         if (self.selectedButtonArr.count == 3) {
             button.selected = NO;
             return;
         }
-        [self.selectedButtonArr addObject:button];
+        [self.selectedButtonArr addObject:button.titleLabel.text];
     } else {
-        [self.selectedButtonArr removeObject:button];
+        [self.selectedButtonArr removeObject:button.titleLabel.text];
     }
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(historyWordHasBeenClicked:)]) {
-        [self.delegate historyWordHasBeenClicked:title];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(goodAtPickViewDidEndSelected:)]) {
+        [self.delegate goodAtPickViewDidEndSelected:self.selectedButtonArr];
     }
 }
 

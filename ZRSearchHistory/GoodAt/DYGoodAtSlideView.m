@@ -24,12 +24,7 @@ CGFloat const goodatBtnH = 24;
 @implementation DYGoodAtSlideView
 - (void)setGoodAt:(NSArray<NSString *> *)goodAt {
     _goodAt = goodAt;
-
-    [self.buttonArr enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-      [obj enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        [obj removeFromSuperview];
-      }];
-    }];
+    [self.buttonArr makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.buttonArr removeAllObjects];
 
     for (int index = 0; index < _goodAt.count; index++) {

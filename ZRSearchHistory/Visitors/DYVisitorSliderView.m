@@ -49,11 +49,7 @@ CGFloat const avatarImgH = 54;
 - (void)setVisitorsArr:(NSArray<DYVisitorModel *> *)visitorsArr {
     _visitorsArr = visitorsArr;
 
-    [self.avatarArr enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-      [obj enumerateObjectsUsingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        [obj removeFromSuperview];
-      }];
-    }];
+    [self.avatarArr makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.avatarArr removeAllObjects];
 
     for (int index = 0; index < _visitorsArr.count; index++) {
@@ -65,7 +61,9 @@ CGFloat const avatarImgH = 54;
         if (index == 0) {
             imgX = avatarImgSpace + CGRectGetMaxX(lastImg.frame);
         }
+        avatarView.tag = index;
         avatarView.frame = CGRectMake(imgX, 0, avatarImgH, avatarImgH);
+        [avatarView addTapAction:@selector(avatarViewClicked:) target:self];
         [self.avatarArr addObject:avatarView];
         [self addSubview:avatarView];
     }
@@ -79,6 +77,12 @@ CGFloat const avatarImgH = 54;
         _avatarArr = [[NSMutableArray alloc] init];
     }
     return _avatarArr;
+}
+- (void)avatarViewClicked:(UIGestureRecognizer *)gesture {
+    DYVisitorModel *model = self.visitorsArr[gesture.view.tag];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(visitorSliderViewClickedAvatat:)]) {
+        [self.delegate visitorSliderViewClickedAvatat:model];
+    }
 }
 
 @end
