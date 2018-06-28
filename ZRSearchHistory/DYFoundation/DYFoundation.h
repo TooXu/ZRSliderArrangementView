@@ -14,4 +14,5 @@
 #import "UIView+Gesture.h"
 #import "UIImageView+WebCache.h"
 #import "MJExtension.h"
+#import "UIColor+Hex.h"
 

@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-//"profile_id": "19",
-//"profile": "baohuxuanshou",
-//"name": "爆护选手",
+//"profile_id": "17",
+//"profile": "cuidiaodashi",
+//"name": "垂钓大师",
 //"value": "",
 //"is_check": 0,
-//"font_color": "#fff",
-//"bg_color": "#aaa"
+//"font_color": "#ffffff",
+//"bg_color": "#aaaaaa"
 
 @interface DYEvaluateModel : NSObject
 

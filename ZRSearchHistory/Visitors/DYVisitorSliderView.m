@@ -82,8 +82,8 @@ CGFloat const avatarImgH = 54;
 }
 - (void)avatarViewClicked:(UIGestureRecognizer *)gesture {
     DYVisitorModel *model = self.visitorsArr[gesture.view.tag];
-    if (self.delegate && [self.delegate respondsToSelector:@selector(visitorSliderViewClickedAvatat:)]) {
-        [self.delegate visitorSliderViewClickedAvatat:model];
+    if (self.dyDelegate && [self.dyDelegate respondsToSelector:@selector(visitorSliderViewClickedAvatat:)]) {
+        [self.dyDelegate visitorSliderViewClickedAvatat:model];
     }
 }
 

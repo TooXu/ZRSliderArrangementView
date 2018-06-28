@@ -91,7 +91,10 @@ NSInteger const EvaluateColNum = 3;
 - (void)setModelArr:(NSArray<DYEvaluateModel *> *)modelArr {
     _modelArr = modelArr;
     NSInteger count = _modelArr.count;
-
+    
+//    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    
     for (int i = 0; i < count; i++) {
         DYEvaluateModel *model = modelArr[i];
         model.color = kRandomColor;
@@ -110,11 +113,11 @@ NSInteger const EvaluateColNum = 3;
         [button setTitle:[NSString stringWithFormat:@"%@(%@)", model.name, model.value] forState:UIControlStateNormal];
         button.tag = i;
         [button sizeToFit];
-        [button setTitleColor:model.color forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor hexStringToColor:model.font_color] forState:UIControlStateNormal];
         button.frame = CGRectMake(btnX, btnY, button.width + EvaluateBtnEnhanceW * 2, EvaluateBtnH);
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [button setDottedLineboard];
-        [button setDottedLineColor:model.color];
+        [button setDottedLineColor:[UIColor hexStringToColor:model.font_color]];
         [self addSubview:button];
     }
 }
@@ -126,7 +129,8 @@ NSInteger const EvaluateColNum = 3;
     button.selected = YES;
     [self.selectedBtnArr addObject:button];
     button.buttonLayer.lineDashPattern = nil;
-    button.backgroundColor = [self.modelArr[button.tag].color colorWithAlphaComponent:0.7];
+    //    button.backgroundColor = [self.modelArr[button.tag].color colorWithAlphaComponent:0.7];
+    button.backgroundColor = [UIColor hexStringToColor:self.modelArr[button.tag].bg_color];
 }
 
 - (NSMutableArray *)selectedBtnArr {

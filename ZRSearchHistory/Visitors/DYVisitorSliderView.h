@@ -18,7 +18,7 @@
 
 @interface DYVisitorSliderView : UIScrollView
 
-@property(nonatomic, weak) id<DYVisitorSliderViewDelegate> delegate;
+@property(nonatomic, weak) id<DYVisitorSliderViewDelegate> dyDelegate;
 @property(nonatomic, strong) NSArray<DYVisitorModel *> *visitorsArr;
 
 @end
