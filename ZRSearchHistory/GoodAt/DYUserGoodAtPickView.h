@@ -1,5 +1,5 @@
 //
-//  DYGoodAtPickView.h
+//  DYUserGoodAtPickView.h
 //  ZRSearchHistory
 //
 //  Created by ZhongruiXu on 2017/4/20.
@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol DYGoodAtPickViewDelegate<NSObject>
+@protocol DYUserGoodAtPickViewDelegate<NSObject>
 @optional
 
 - (void)goodAtPickViewDidEndSelected:(NSArray *)goodAtArr;
 
 @end
 
-@interface DYGoodAtPickView : UIView
+@interface DYUserGoodAtPickView : UIView
 
 @property(nonatomic, strong) NSArray<NSString *> *historyWordsArr;
-@property(nonatomic, weak) id<DYGoodAtPickViewDelegate> delegate;
+@property(nonatomic, weak) id<DYUserGoodAtPickViewDelegate> delegate;
 
 @end

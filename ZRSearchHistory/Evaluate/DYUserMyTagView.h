@@ -1,5 +1,5 @@
 //
-//  DYPersonEvaluateView.h
+//  DYUserMyTagView.h
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/26.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class DYEvaluateModel;
-@interface DYPersonEvaluateView : UIView
+@interface DYUserMyTagView : UIView
 @property(nonatomic, strong) NSArray<DYEvaluateModel *> *modelArr;
 @end

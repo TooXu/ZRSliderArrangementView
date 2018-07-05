@@ -1,12 +1,12 @@
 //
-//  DYPersonEvaluateView.m
+//  DYUserMyTagView.m
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/26.
 //  Copyright © 2018年 XZR. All rights reserved.
 //
 
-#import "DYPersonEvaluateView.h"
+#import "DYUserMyTagView.h"
 #import "DYEvaluateModel.h"
 
 @interface DYPersonEvaluateButton : UIButton
@@ -60,7 +60,7 @@
 
 @end
 
-@interface DYPersonEvaluateView ()
+@interface DYUserMyTagView ()
 @property(nonatomic, strong) UIButton *lineButton;
 //@property(nonatomic, strong) UIColor *selectedColor;
 @property(nonatomic, strong) NSMutableArray *selectedBtnArr;
@@ -79,7 +79,7 @@ CGFloat const EvaluateBtnH = 30;
 ///列数
 NSInteger const EvaluateColNum = 3;
 
-@implementation DYPersonEvaluateView
+@implementation DYUserMyTagView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

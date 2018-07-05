@@ -1,15 +1,15 @@
 //
-//  DYGoodAtSliderView.m
+//  DYUserGoodAtSliderView.m
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/25.
 //  Copyright © 2018年 XZR. All rights reserved.
 //
 
-#import "DYGoodAtSliderView.h"
+#import "DYUserGoodAtSliderView.h"
 #import "DYGoodAtModel.h"
 
-@interface DYGoodAtSliderView ()
+@interface DYUserGoodAtSliderView ()
 @property(nonatomic, strong) NSMutableArray *buttonArr;
 @end
 
@@ -22,7 +22,7 @@ CGFloat const goodatBtnSpace = 16;
 /// button 高度
 CGFloat const goodatBtnH = 24;
 
-@implementation DYGoodAtSliderView
+@implementation DYUserGoodAtSliderView
 
 - (void)setGoodAtArr:(NSArray<DYGoodAtModel *> *)goodAtArr {
     _goodAtArr = goodAtArr;

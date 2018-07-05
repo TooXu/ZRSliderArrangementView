@@ -7,20 +7,20 @@
 //
 
 #import "ViewController.h"
-#import "DYGoodAtPickView.h"
-#import "DYGoodAtSliderView.h"
+#import "DYUserGoodAtPickView.h"
+#import "DYUserGoodAtSliderView.h"
 #import "UIView+Frame.h"
 #import "UIConst.h"
-#import "DYVisitorSliderView.h"
+#import "DYUserVisitorSliderView.h"
 #import "DYVisitorModel.h"
-#import "DYPersonEvaluateView.h"
+#import "DYUserMyTagView.h"
 #import "DYEvaluateModel.h"
 #import "DYGoodAtModel.h"
 #import "NSObject+JsonDicExchange.h"
 
-@interface ViewController ()<DYGoodAtPickViewDelegate, DYVisitorSliderViewDelegate>
-@property(nonatomic, strong) DYGoodAtPickView *historyView;
-@property (nonatomic, strong) DYVisitorSliderView *visitorView;
+@interface ViewController ()<DYUserGoodAtPickViewDelegate, DYUserVisitorSliderViewDelegate>
+@property(nonatomic, strong) DYUserGoodAtPickView *historyView;
+@property (nonatomic, strong) DYUserVisitorSliderView *visitorView;
 @end
 
 @implementation ViewController
@@ -76,18 +76,18 @@
         @"远投"
     ];
 
-    DYGoodAtPickView *dygoodatPickView = [[DYGoodAtPickView alloc] initWithFrame:CGRectMake(16, 100, kScreenWidth, 0)];
-    self.historyView = dygoodatPickView;
-    dygoodatPickView.historyWordsArr = gdArr;
-    [dygoodatPickView layoutIfNeeded];
-    dygoodatPickView.delegate = self;
-    [self.view addSubview:dygoodatPickView];
-    NSLog(@"historyWordsView - %@", dygoodatPickView);
+    DYUserGoodAtPickView *dygoodatPkView = [[DYUserGoodAtPickView alloc] initWithFrame:CGRectMake(16, 100, kScreenWidth, 0)];
+    self.historyView = dygoodatPkView;
+    dygoodatPkView.historyWordsArr = gdArr;
+//    [dygoodatPkView layoutIfNeeded];
+    dygoodatPkView.delegate = self;
+    [self.view addSubview:dygoodatPkView];
+    NSLog(@"historyWordsView - %@", dygoodatPkView);
 
 
     NSArray *goodAtArr = [self good_atArr];
-    DYGoodAtSliderView *goodAtView = [DYGoodAtSliderView new];
-    goodAtView.frame = CGRectMake(0, dygoodatPickView.bottom + 12, kScreenWidth, 24);
+    DYUserGoodAtSliderView *goodAtView = [DYUserGoodAtSliderView new];
+    goodAtView.frame = CGRectMake(0, dygoodatPkView.bottom + 12, kScreenWidth, 24);
     goodAtView.goodAtArr = goodAtArr;
     [self.view addSubview:goodAtView];
 
@@ -105,15 +105,15 @@
     NSArray *visitorArr = [self visitorArr];
     //        @[ visitorA, visitorB, visitorC, visitorD, visitorE, visitorA, visitorB, visitorC, visitorD, visitorE ];
 
-    DYVisitorSliderView *visitorView = [DYVisitorSliderView new];
+    DYUserVisitorSliderView *visitorView = [DYUserVisitorSliderView new];
     self.visitorView = visitorView;
     visitorView.dyDelegate = self;
     visitorView.frame = CGRectMake(0, goodAtView.bottom + 30, kScreenWidth, 54);
     visitorView.visitorsArr = visitorArr;
     [self.view addSubview:visitorView];
     NSArray *evaluateArr = [self my_tagArr];
-    DYPersonEvaluateView *personview =
-        [[DYPersonEvaluateView alloc] initWithFrame:CGRectMake(16, visitorView.bottom + 32, kScreenWidth - 32, 144)];
+    DYUserMyTagView *personview =
+        [[DYUserMyTagView alloc] initWithFrame:CGRectMake(16, visitorView.bottom + 32, kScreenWidth - 32, 144)];
     personview.modelArr = evaluateArr;
     personview.backgroundColor = kColorOrange;
 

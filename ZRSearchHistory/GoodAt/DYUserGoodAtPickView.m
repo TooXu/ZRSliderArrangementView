@@ -6,7 +6,7 @@
 //  Copyright © 2017年 XZR. All rights reserved.
 //
 
-#import "DYGoodAtPickView.h"
+#import "DYUserGoodAtPickView.h"
 
 //#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define btnW (kScreenWidth - 16 * 2 - 10 * 2) / 3
@@ -35,7 +35,7 @@ static UIFont *selectedFont() { return [DYThemeManager getBoldFont:16]; }
 }
 
 @end
-@interface DYGoodAtPickView ()
+@interface DYUserGoodAtPickView ()
 @property(nonatomic, strong) NSMutableArray *rowsContainer;
 @property(nonatomic, assign) CGFloat selfHeight;
 @property(nonatomic, assign) CGRect selfFrame;
@@ -57,7 +57,7 @@ CGFloat const pickBtnH = 40;
 ///列数
 NSInteger const pickColNum = 3;
 
-@implementation DYGoodAtPickView
+@implementation DYUserGoodAtPickView
 #pragma mark - Setter
 
 - (void)setHistoryWordsArr:(NSArray<NSString *> *)historyWordsArr {
@@ -97,6 +97,7 @@ NSInteger const pickColNum = 3;
         [self addSubview:button];
         if (i == count - 1) {
             _selfHeight = CGRectGetMaxY(button.frame);
+            self.frame = CGRectMake(_selfFrame.origin.x, _selfFrame.origin.y, _selfFrame.size.width, _selfHeight);
             [self setNeedsLayout];
         }
     }
@@ -140,11 +141,6 @@ NSInteger const pickColNum = 3;
     if (self.delegate && [self.delegate respondsToSelector:@selector(goodAtPickViewDidEndSelected:)]) {
         [self.delegate goodAtPickViewDidEndSelected:self.selectedButtonArr];
     }
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    self.frame = CGRectMake(_selfFrame.origin.x, _selfFrame.origin.y, _selfFrame.size.width, _selfHeight);
 }
 @end
 

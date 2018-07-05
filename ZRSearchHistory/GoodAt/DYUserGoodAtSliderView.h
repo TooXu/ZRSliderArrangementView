@@ -1,5 +1,5 @@
 //
-//  DYGoodAtSliderView.h
+//  DYUserGoodAtSliderView.h
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/25.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class DYGoodAtModel;
 
-@interface DYGoodAtSliderView : UIScrollView
+@interface DYUserGoodAtSliderView : UIScrollView
 //@property(nonatomic, strong) NSArray<NSString *> *goodAt;
 @property (nonatomic, strong) NSArray<DYGoodAtModel *> *goodAtArr;
 @end

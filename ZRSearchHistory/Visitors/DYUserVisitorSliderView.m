@@ -1,12 +1,12 @@
 //
-//  DYVisitorSliderView.m
+//  DYUserVisitorSliderView.m
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/25.
 //  Copyright © 2018年 XZR. All rights reserved.
 //
 
-#import "DYVisitorSliderView.h"
+#import "DYUserVisitorSliderView.h"
 #import "DYVisitorModel.h"
 
 @interface DYVisitorAvatarView : UIView
@@ -35,11 +35,11 @@
 
 @end
 
-@interface DYVisitorSliderView ()
+@interface DYUserVisitorSliderView ()
 @property(nonatomic, strong) NSMutableArray *avatarArr;
 @end
 
-@implementation DYVisitorSliderView
+@implementation DYUserVisitorSliderView
 /// button 左右之间间距
 CGFloat const avatarImgMargin = 4;
 /// button 与屏幕间距

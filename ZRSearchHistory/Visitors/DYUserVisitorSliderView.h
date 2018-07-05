@@ -1,5 +1,5 @@
 //
-//  DYVisitorSliderView.h
+//  DYUserVisitorSliderView.h
 //  ZRSearchHistory
 //
 //  Created by Zhongrui on 2018/6/25.
@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 @class DYVisitorModel;
 
-@protocol DYVisitorSliderViewDelegate<NSObject>
+@protocol DYUserVisitorSliderViewDelegate<NSObject>
 @optional
 
 - (void)visitorSliderViewClickedAvatat:(DYVisitorModel *)visitorModel;
 
 @end
 
-@interface DYVisitorSliderView : UIScrollView
+@interface DYUserVisitorSliderView : UIScrollView
 
-@property(nonatomic, weak) id<DYVisitorSliderViewDelegate> dyDelegate;
+@property(nonatomic, weak) id<DYUserVisitorSliderViewDelegate> dyDelegate;
 @property(nonatomic, strong) NSArray<DYVisitorModel *> *visitorsArr;
 
 @end
